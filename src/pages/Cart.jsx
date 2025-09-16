@@ -16,13 +16,15 @@ const Cart = ({
 }) => {
   const CartItem = ({ item, onUpdateQuantity, onRemove }) => (
     <div className="card-dashboard rounded-xl p-6 transition-all duration-200 hover:shadow-lg">
-      <div className="flex items-center space-x-4">
+      <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-4">
+        {/* Product Image */}
         <img 
           src={item.image} 
           alt={item.name}
           className="w-20 h-20 rounded-xl object-cover shadow-sm flex-shrink-0"
         />
         
+        {/* Product Details */}
         <div className="flex-1 min-w-0">
           <h3 className="font-semibold text-lg text-foreground mb-1">
             {item.name}
@@ -40,7 +42,9 @@ const Cart = ({
           </div>
         </div>
         
-        <div className="flex items-center space-x-4 flex-shrink-0">
+        {/* Actions */}
+        <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-4 flex-shrink-0">
+          {/* Quantity Controls */}
           <div className="flex items-center space-x-2 bg-secondary/50 rounded-xl p-1">
             <Button
               variant="ghost"
@@ -64,13 +68,16 @@ const Cart = ({
               <Plus className="h-4 w-4" />
             </Button>
           </div>
-
-          <div className="text-right min-w-[80px]">
+        
+          {/* Total */}
+          <div className="text-left md:text-right min-w-[80px]">
             <p className="text-sm text-muted-foreground">Total</p>
             <p className="text-xl font-bold text-foreground">
               ${(item.price * item.quantity).toFixed(2)}
             </p>
           </div>
+        
+          {/* Remove Button */}
           <Button
             variant="ghost"
             size="sm"
@@ -81,6 +88,7 @@ const Cart = ({
           </Button>
         </div>
       </div>
+
     </div>
   );
 

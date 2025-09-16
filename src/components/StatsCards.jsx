@@ -38,7 +38,7 @@ const StatCard = ({ title, value, subtitle, icon: Icon, trend, color = 'primary'
 };
 
 const StatsCards = ({ products }) => {
-  // Calculate statistics
+  
   const totalProducts = products.length;
   const totalRevenue = products.reduce((sum, product) => sum + (product.price * product.stock), 0);
   const lowStockItems = products.filter(product => product.stock < 20).length;
@@ -81,11 +81,12 @@ const StatsCards = ({ products }) => {
   ];
 
   return (
-    <div className="grid grid-cols-4 gap-4 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
       {stats.map((stat, index) => (
         <StatCard key={index} {...stat} />
       ))}
     </div>
+
   );
 };
 
